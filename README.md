@@ -17,14 +17,17 @@ Then just the jquery.google_forms.js script to your web page (you obviously need
 Then just add one of the following to trigger this plugin on your google form.
 
 Redirect Only:
+
 	$('form').googleForm('thanks.html');
 
 onsubmit Only:
+
 	$('form').googleForm(function () {
         // Form is not submitted... do your stuff here
     });
 
 onsubmit and redirect:
+
 	$('form').googleForm({
         onsubmit: function () {
 	        // Form is not submitted... do your stuff here
