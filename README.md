@@ -10,11 +10,11 @@ To use it, you first need to get the form's embeddable source html i.e. the raw 
 1.  Embedding the form &lt;iframe&gt; in a test page and then examining the form source (using the browser dev tools) and copying the raw &lt;form&gt;.
 2.  Embedding the raw form source (captured in #1 above) in the target web page.
 
-You can not modify the format of the form (labels etc).
+You can now modify the format of the form (labels etc).
 
-Then just the jquery.google_forms.js script to your web page (you obviously need jQuery itself too).
+Then just add the jquery.google_forms.js script to your web page (you obviously need jQuery itself too).
 
-Then just add one of the following to trigger this plugin on your google form.
+Then just add one of the following pieces of code to trigger this plugin on the google form in your web page.
 
 Redirect Only:
 
