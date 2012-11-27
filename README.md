@@ -23,14 +23,14 @@ Redirect Only:
 onsubmit Only:
 
 	$('form').googleForm(function () {
-        // Form is not submitted... do your stuff here
+        // Form is submitted... do your stuff here
     });
 
 onsubmit and redirect:
 
 	$('form').googleForm({
         onsubmit: function () {
-	        // Form is not submitted... do your stuff here
+	        // Form is submitted... do your stuff here
         },
         redirect: 'thanks.html'
     });
