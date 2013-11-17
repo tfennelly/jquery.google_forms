@@ -20,24 +20,30 @@
                         var iFrame = $('<iframe>', {name: targetFrameName}).css({display: 'none'});
                         iFrame.insertBefore(theForm);
 
-                        iFrame.load(function() {
-                            try {
-                                if (typeof onSubmit === 'string') {
-                                    window.location.replace(onSubmit);
-                                } else if (typeof onSubmit === 'function') {
-                                    onSubmit();
-                                } else if (typeof onSubmit === 'object') {
-                                    if (onSubmit.onsubmit) {
-                                        onSubmit.onsubmit();
+                        try {
+                            iFrame.load(function() {
+                                try {
+                                    if (typeof onSubmit === 'string') {
+                                        window.location.replace(onSubmit);
+                                    } else if (typeof onSubmit === 'function') {
+                                        onSubmit();
+                                    } else if (typeof onSubmit === 'object') {
+                                        if (onSubmit.onsubmit) {
+                                            onSubmit.onsubmit();
+                                        }
+                                        if (onSubmit.redirect) {
+                                            window.location.replace(onSubmit.redirect);
+                                        }
                                     }
-                                    if (onSubmit.redirect) {
-                                        window.location.replace(onSubmit.redirect);
-                                    }
+                                } finally {
+                                    theForm.isSubmitting = false;
+                                    iFrame.remove();
                                 }
-                            } finally {
-                                theForm.isSubmitting = false;
-                            }
-                        });
+                            });
+                        } catch (e) {
+                            theForm.isSubmitting = false;
+                            iFrame.remove();
+                        }
                     } catch (e) {
                         theForm.isSubmitting = false;
                     }
